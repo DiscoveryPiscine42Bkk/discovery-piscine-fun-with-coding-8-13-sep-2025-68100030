@@ -1,0 +1,58 @@
+// Load the tasks from the cookie when the page loads
+$(document).ready(function() {
+  loadTasks();
+
+  // Handle adding new tasks
+  $('#newTaskButton').on('click', function() {
+    const task = prompt("Enter a new task:");
+
+    if (task && task.trim() !== "") {
+      addTask(task.trim());
+    }
+  });
+
+  // Function to add a task
+  function addTask(task) {
+    // Create the task item
+    const taskItem = $('<div class="task-item">').text(task)
+      .append('<button>Remove</button>');
+
+    // Append the task item to the task list
+    $('#ft_list').prepend(taskItem);
+
+    // Save the task to the cookie
+    saveTasks();
+  }
+
+  // Function to remove a task
+  $(document).on('click', '.task-item button', function() {
+    const taskItem = $(this).parent();
+    taskItem.remove();
+
+    // Save the updated task list
+    saveTasks();
+  });
+
+  // Function to save tasks to a cookie
+  function saveTasks() {
+    const tasks = [];
+    $('.task-item').each(function() {
+      tasks.push($(this).text().trim());
+    });
+
+    // Store the tasks in a cookie
+    document.cookie = "tasks=" + JSON.stringify(tasks) + "; path=/; max-age=3600";
+  }
+
+  // Function to load tasks from a cookie
+  function loadTasks() {
+    const cookie = document.cookie.split("; ").find(row => row.startsWith("tasks="));
+    if (cookie) {
+      const tasks = JSON.parse(cookie.split("=")[1]);
+
+      tasks.forEach(task => {
+        addTask(task);
+      });
+    }
+  }
+});
