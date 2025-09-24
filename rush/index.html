@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rush Project</title>
+<style>
+  body{
+    font-family:sans-serif;
+    text-align:center;
+    padding:50px;
+    /* พื้นหลังไล่สีชมพู-ฟ้าอ่อนพร้อมลายจุด */
+    background:
+      radial-gradient(circle at 10% 20%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 90% 80%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      linear-gradient(135deg,#ffb3d9,#b3e5ff);
+    background-size:40px 40px,40px 40px,auto;
+  }
+  h1{margin-bottom:10px;}
+  p{margin-bottom:40px;}
+  .wrap{
+    display:flex;
+    justify-content:center;
+    gap:3cm;           /* ระยะห่างประมาณ 3 ซม. */
+    flex-wrap:wrap;
+  }
+  .box{
+    background:#fff;
+    border:3px solid #ff99cc;
+    border-radius:25px;
+    padding:20px 30px;
+    width:200px;
+    box-shadow:0 6px 12px rgba(0,0,0,0.15);
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+    transition:transform 0.2s;
+  }
+  .box:hover{
+    background:#ffe6f2;
+    transform:translateY(-5px);
+  }
+  .title{font-size:1.4rem;color:#ff66a3;}
+  .name{font-size:1rem;margin-top:6px;}
+</style>
+</head>
+<body>
+  <h1>Welcome to the Rush Project</h1>
+  <p>เลือก resume ที่ท่านสนใจ</p>
+
+  <div class="wrap">
+    <a href="resume1.html" class="box">
+      <div class="title">Resume 1</div>
+      <div class="name">นางสาวชลธิชา มะธิปิไข</div>
+    </a>
+    <a href="resume2.html" class="box">
+      <div class="title">Resume 2</div>
+      <div class="name">นางสาวนัจญมีย์ สุมาลย์แมน</div>
+    </a>
+  </div>
+</body>
+</html>
